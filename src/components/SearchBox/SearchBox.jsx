@@ -1,7 +1,21 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { getFilter } from '../../redux/selectors';
+import { changeFilter } from '../../redux/filtersSlice';
+
 import css from './SearchBox.module.css';
 import { IoIosSearch } from 'react-icons/io';
 
-export default function SearchBox({ value, onChange }) {
+export default function SearchBox() {
+  const dispatch = useDispatch();
+  const value = useSelector(getFilter);
+  // console.log(dispatch);
+  console.log('value', value);
+
+  function handleChangeFilter(evt) {
+    dispatch(changeFilter(evt.target.value));
+    console.log(changeFilter(evt.target.value));
+  }
+
   return (
     <div className={css.inputWrap}>
       <label className={css.label}>
@@ -12,7 +26,7 @@ export default function SearchBox({ value, onChange }) {
         className={css.input}
         type="name"
         value={value}
-        onChange={onChange}
+        onChange={handleChangeFilter}
         placeholder="Please enter a name to search"
       />
     </div>

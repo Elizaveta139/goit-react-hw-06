@@ -1,9 +1,11 @@
-import css from './ContactForm.module.css';
-import { IoIosContact, IoIosCall, IoMdPersonAdd } from 'react-icons/io';
-import { nanoid } from 'nanoid';
-import { useId } from 'react';
+import { useId, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactsSlice';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+
+import css from './ContactForm.module.css';
+import { IoIosContact, IoIosCall, IoMdPersonAdd } from 'react-icons/io';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Too Short!').max(50, 'Too Long!').required('Required'),
@@ -12,21 +14,33 @@ const validationSchema = Yup.object().shape({
 
 const initialValues = { id: '', name: '', number: '' };
 
-export default function ContactForm({ addContact }) {
+export default function ContactForm() {
   const nameFieldId = useId();
   const numberFieldId = useId();
 
-  function handleSubmit(values, actions) {
-    const idContact = nanoid(5);
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
 
-    const newContact = {
-      id: idContact,
-      name: values.name,
-      number: values.number,
-    };
+  // function handleSubmit(values, actions) {
+  //   const idContact = nanoid(5);
 
-    addContact(newContact);
-    actions.resetForm();
+  //   const newContact = {
+  //     id: idContact,
+  //     name: values.name,
+  //     number: values.number,
+  //   };
+
+  //   addContact(newContact);
+  //   actions.resetForm();
+  // }
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+
+    dispatch(addContact({ name, number }));
+    setName('');
+    setNumber('');
   }
 
   return (
