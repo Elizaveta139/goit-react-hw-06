@@ -1,7 +1,12 @@
+import { deleteContact } from '../../redux/contactsSlice';
+import { useDispatch } from 'react-redux';
+
 import css from './Contact.module.css';
 import { IoIosContact, IoIosCall, IoIosTrash } from 'react-icons/io';
 
-export default function Contact({ id, name, number, onDelete }) {
+export default function Contact({ id, name, number }) {
+  const dispatch = useDispatch();
+
   return (
     <div className={css.wrap}>
       <div className={css.infoContacts}>
@@ -15,7 +20,13 @@ export default function Contact({ id, name, number, onDelete }) {
         </p>
       </div>
 
-      <button type="button" className={css.btn} onClick={() => onDelete(id)}>
+      <button
+        type="button"
+        className={css.btn}
+        onClick={() => {
+          dispatch(deleteContact(id));
+        }}
+      >
         Delete
         <IoIosTrash className={css.icon} size="24" />
       </button>

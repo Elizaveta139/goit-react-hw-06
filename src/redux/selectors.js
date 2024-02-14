@@ -1,5 +1,6 @@
 export function getContacts(state) {
   state.contacts.items;
+  console.log('bbb', state.contacts.items);
 }
 
 export function getFilter(state) {

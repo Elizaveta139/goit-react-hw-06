@@ -1,6 +1,8 @@
 import { useId, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contactsSlice';
+import { getContacts } from '../../redux/selectors';
+import { nanoid } from '@reduxjs/toolkit';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -18,30 +20,31 @@ export default function ContactForm() {
   const nameFieldId = useId();
   const numberFieldId = useId();
 
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  // const [name, setName] = useState('');
+  // const [number, setNumber] = useState('');
+
   const dispatch = useDispatch();
 
-  // function handleSubmit(values, actions) {
-  //   const idContact = nanoid(5);
+  function handleSubmit({ name, number }, actions) {
+    // const idContact = nanoid(5);
 
-  //   const newContact = {
-  //     id: idContact,
-  //     name: values.name,
-  //     number: values.number,
-  //   };
+    const newContact = {
+      id: nanoid(5),
+      name,
+      number,
+    };
 
-  //   addContact(newContact);
-  //   actions.resetForm();
-  // }
-
-  function handleSubmit(evt) {
-    evt.preventDefault();
-
-    dispatch(addContact({ name, number }));
-    setName('');
-    setNumber('');
+    dispatch(addContact(newContact));
+    actions.resetForm();
   }
+
+  // function handleSubmit(evt) {
+  //   evt.preventDefault();
+
+  //   dispatch(addContact({ name, number }));
+  //   setName('');
+  //   setNumber('');
+  // }
 
   return (
     <Formik

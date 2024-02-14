@@ -8,13 +8,13 @@ import { IoIosSearch } from 'react-icons/io';
 export default function SearchBox() {
   const dispatch = useDispatch();
   const value = useSelector(getFilter);
-  // console.log(dispatch);
-  console.log('value', value);
 
   function handleChangeFilter(evt) {
     dispatch(changeFilter(evt.target.value));
     console.log(changeFilter(evt.target.value));
   }
+
+  console.log('value', value);
 
   return (
     <div className={css.inputWrap}>

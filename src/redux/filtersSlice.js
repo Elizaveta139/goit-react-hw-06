@@ -10,7 +10,7 @@ const filtersSlice = createSlice({
   reducers: {
     changeFilter(state, action) {
       state.name = action.payload;
-      console.log(action.payload);
+      console.log('action', action.payload);
     },
   },
 });
