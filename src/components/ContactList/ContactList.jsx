@@ -16,11 +16,14 @@ import Contact from '../Contact/Contact';
 export default function ContactList() {
   // const dispatch = useDispatch();
 
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  console.log('filter', filter);
+  const contacts = useSelector(state => state.contacts.items);
+  const filters = useSelector(state => state.filters);
+
+  console.log('contacts', contacts);
+  console.log('filter', filters);
+
   const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
+    contact.name.toString().toLowerCase().includes(filters.toString().toLowerCase())
   );
   console.log('filteredContacts', filteredContacts);
 
@@ -29,7 +32,7 @@ export default function ContactList() {
       {filteredContacts.map(({ id, name, number }) => {
         return (
           <li key={id} className={css.item}>
-            <Contact key={id} name={name} number={number} id={id} />
+            <Contact name={name} number={number} id={id} />
           </li>
         );
       })}

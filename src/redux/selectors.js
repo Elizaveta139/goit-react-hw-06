@@ -4,7 +4,7 @@ export function getContacts(state) {
 }
 
 export function getFilter(state) {
-  state.filter;
+  state.filters;
 }
 
 // export function getFilteredContacts(state) {

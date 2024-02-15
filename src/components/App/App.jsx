@@ -12,7 +12,7 @@ export default function App() {
       <ContactForm />
       {/* <h2 className={css.title}>Contacts</h2> */}
       <SearchBox />
-      {/* <ContactList /> */}
+      <ContactList />
     </Layout>
   );
 }
