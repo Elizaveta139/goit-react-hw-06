@@ -25,7 +25,7 @@ export default function SearchBox() {
       <input
         className={css.input}
         type="name"
-        value={value}
+        value={value.name}
         onChange={handleChangeFilter}
         placeholder="Please enter a name to search"
       />

@@ -1,11 +1,6 @@
-export function getContacts(state) {
-  state.contacts.items;
-  console.log('bbb', state.contacts.items);
-}
+export const getContacts = state => state.contacts.items;
 
-export function getFilter(state) {
-  state.filters;
-}
+export const getFilter = state => state.filters;
 
 // export function getFilteredContacts(state) {
 //   const contacts = getContacts(state);

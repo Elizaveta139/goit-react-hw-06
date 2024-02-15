@@ -1,7 +1,6 @@
-import { useId, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useId } from 'react';
+import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contactsSlice';
-import { getContacts } from '../../redux/selectors';
 import { nanoid } from '@reduxjs/toolkit';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -20,14 +19,9 @@ export default function ContactForm() {
   const nameFieldId = useId();
   const numberFieldId = useId();
 
-  // const [name, setName] = useState('');
-  // const [number, setNumber] = useState('');
-
   const dispatch = useDispatch();
 
   function handleSubmit({ name, number }, actions) {
-    // const idContact = nanoid(5);
-
     const newContact = {
       id: nanoid(5),
       name,
@@ -37,14 +31,6 @@ export default function ContactForm() {
     dispatch(addContact(newContact));
     actions.resetForm();
   }
-
-  // function handleSubmit(evt) {
-  //   evt.preventDefault();
-
-  //   dispatch(addContact({ name, number }));
-  //   setName('');
-  //   setNumber('');
-  // }
 
   return (
     <Formik
