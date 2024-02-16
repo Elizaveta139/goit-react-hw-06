@@ -38,10 +38,10 @@ const contactsSlice = createSlice({
 });
 
 const persistConfig = {
-  key: 'contacts-key',
+  key: 'contacts',
   storage,
 };
 
 export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
-export const persistedReducer = persistReducer(persistConfig, contactsReducer);
+export const persistedContactsReducer = persistReducer(persistConfig, contactsReducer);

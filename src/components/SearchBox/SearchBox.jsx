@@ -11,10 +11,10 @@ export default function SearchBox() {
 
   function handleChangeFilter(evt) {
     dispatch(changeFilter(evt.target.value));
-    console.log(changeFilter(evt.target.value));
+    // console.log(changeFilter(evt.target.value));
   }
 
-  console.log('value', value);
+  // console.log('value', value);
 
   return (
     <div className={css.inputWrap}>

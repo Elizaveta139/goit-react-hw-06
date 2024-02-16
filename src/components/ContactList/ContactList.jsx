@@ -7,13 +7,13 @@ export default function ContactList() {
   const contacts = useSelector(getContacts);
   const filters = useSelector(getFilter);
 
-  console.log('contacts', contacts);
-  console.log('filter', filters.name);
+  // console.log('contacts', contacts);
+  // console.log('filter', filters.name);
 
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filters.name.toLowerCase())
   );
-  console.log('filteredContacts', filteredContacts);
+  // console.log('filteredContacts', filteredContacts);
 
   return (
     <ul className={css.list}>
