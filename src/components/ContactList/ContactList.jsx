@@ -16,14 +16,16 @@ export default function ContactList() {
   // console.log('filteredContacts', filteredContacts);
 
   return (
-    <ul className={css.list}>
-      {filteredContacts.map(({ id, name, number }) => {
-        return (
-          <li key={id} className={css.item}>
-            <Contact name={name} number={number} id={id} />
-          </li>
-        );
-      })}
-    </ul>
+    <div className={css.wrap}>
+      <ul className={css.list}>
+        {filteredContacts.map(({ id, name, number }) => {
+          return (
+            <li key={id} className={css.item}>
+              <Contact name={name} number={number} id={id} />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
